@@ -1,0 +1,65 @@
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top" style="background-color: #0094FF;">
+    <div class="container-fluid">
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="<%= root_path %>">Merry</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <%= link_to "Get Started", new_user_path %>
+              </li>
+              <li>
+                  <%= link_to "About", "/pages/about" %>
+              </li>
+              <li>
+                  <%= link_to "Contact", new_contact_path %>
+              </li>
+              <% if user_signed_in? %>
+                <li><%= link_to "#{current_user.name}", user_path(:id) %><li>
+              <% else %>
+                <li><%= link_to "Sign In", new_session_path %></li>
+              <% end %>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="form-horizontal" style="text-align:center; margin-top:100px;">
+  <h1>Create an account to get started!</h1>
+  <br>
+  <%= @user.errors.full_messages.join(", ") %>
+  <%= form_for @user do |f| %>
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= f.text_field :first_name, placeholder: "First name", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= f.text_field :last_name, placeholder: "Last name", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= f.email_field :email, placeholder: "Email", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= f.password_field :password_confirmation, placeholder: "Confirm password", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Sign Up", class: "btn btn-primary", style: "padding: 10px 100px 10px 100px; border-radius: 30px; color: white; background-color:#0094FF; font-family:Helvetica;"%>
+  </div>
+  <% end %>
+  <%= link_to "Already have an account?", new_session_path %>
+</div>

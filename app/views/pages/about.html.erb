@@ -1,0 +1,38 @@
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top" style="background-color: #0094FF;">
+    <div class="container-fluid">
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="<%= root_path %>">Merry</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <%= link_to "Get Started", new_user_path %>
+              </li>
+              <li>
+                  <%= link_to "About", "/pages/about" %>
+              </li>
+              <li>
+                  <%= link_to "Contact", new_contact_path %>
+              </li>
+              <% if user_signed_in? %>
+                <li><%= link_to "#{current_user.name}", user_path(:id) %><li>
+              <% else %>
+                <li><%= link_to "Sign In", new_session_path %></li>
+              <% end %>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container" style="text-align:center; margin-top:80px;">
+  <h1>About Us</h1>
+  <div>
+    <%= image_tag "doctor-supply.jpg", class: "about-image" %>
+  </div>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+</div>
