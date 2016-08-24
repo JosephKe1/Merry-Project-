@@ -1,8 +1,12 @@
 <div class="form-horizontal" style="text-align:center; margin-top:100px;">
-  <h1>Create an account to get started!</h1>
+  <h1>Account Settings</h1>
   <br>
-  <%= @user.errors.full_messages.join(", ") %>
-  <%= form_for @user do |f| %>
+  <%= form_for @user, html: { multipart: true } do |f| %>
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= f.file_field :avatar %>
+    </div>
+  </div>
   <div class="form-group">
     <div class="col-sm-4 col-sm-offset-4">
       <%= f.text_field :first_name, placeholder: "First name", class: "form-control" %>
@@ -20,7 +24,7 @@
   </div>
   <div class="form-group">
     <div class="col-sm-4 col-sm-offset-4">
-      <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+      <%= f.password_field :password, placeholder: "New password", class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
@@ -29,8 +33,7 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.submit "Sign Up", class: "btn btn-primary", style: "padding: 10px 100px 10px 100px; border-radius: 30px; color: white; background-color:#0094FF; font-family:Helvetica;"%>
+    <%= f.submit "Update Settings", class: "btn btn-primary", style: "padding: 10px 100px 10px 100px; border-radius: 30px; color: white; background-color:#0094FF; font-family:Helvetica;"%>
   </div>
   <% end %>
-  <%= link_to "Already have an account?", new_session_path %>
 </div>

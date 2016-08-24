@@ -1,36 +1,7 @@
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top" style="background-color: #0094FF;">
-    <div class="container-fluid">
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                Menu <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand" href="<%= root_path %>">Merry</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <%= link_to "Get Started", new_user_path %>
-              </li>
-              <li>
-                  <%= link_to "About", "/pages/about" %>
-              </li>
-              <li>
-                  <%= link_to "Contact", new_contact_path %>
-              </li>
-              <% if user_signed_in? %>
-                <li><%= link_to "#{current_user.name}", user_path(:id) %><li>
-                <li><%= link_to "Sign Out", sessions_path, method: :delete %></li>
-              <% else %>
-                <li><%= link_to "Sign In", new_session_path %></li>
-              <% end %>
-            </ul>
-        </div>
-    </div>
-</nav>
-<br>
-<br>
-<br>
-<h1>Profile</h1>
-<p><%= current_user.full_name %></p>
-<p><%= current_user.email %></p>
+<div class="container" style="text-align:center; margin-top:100px;">
+  <%= image_tag @user.avatar.url(:medium) %>
+  <h1><%= current_user.full_name %></h1>
+  <p><%= current_user.email %></p>
+  <p><%= link_to "Book Appointment", new_user_id_path %></p>
+  <p><%= link_to "Edit Account", edit_user_path(current_user) %></p>
+</div>

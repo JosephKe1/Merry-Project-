@@ -14,7 +14,20 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.new 
+    @user = User.find params[:id]
+  end
+
+  def edit
+    @user = User.find params[:id]
+  end
+
+  def update
+    @user = User.find params[:id]
+    if @user.present?
+      @user.update user_params
+      @user.update_attribute(:avatar, params[:user][:avatar])
+    end 
+    redirect_to user_path(current_user)
   end
 
   private
@@ -24,6 +37,7 @@ class UsersController < ApplicationController
                                  :last_name,
                                  :email,
                                  :password,
-                                 :password_confirmation)
+                                 :password_confirmation,
+                                 :avatar)
   end
 end
