@@ -27,6 +27,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# gem 'delayed_job_active_record'
+# gem 'sinatra', '2.0.0.beta2'
+# gem 'delayed_job_web'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -44,6 +48,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
   gem 'hirb'
+  gem "rails-erd"
+  gem "letter_opener"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

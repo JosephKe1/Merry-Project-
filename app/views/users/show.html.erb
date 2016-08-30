@@ -2,6 +2,8 @@
   <%= image_tag @user.avatar.url(:medium) %>
   <h1><%= current_user.full_name %></h1>
   <p><%= current_user.email %></p>
-  <p><%= link_to "Book Appointment", new_user_id_path %></p>
+  
+  <p><%= link_to "Book Appointment", new_payment_path %></p>
+
   <p><%= link_to "Edit Account", edit_user_path(current_user) %></p>
 </div>

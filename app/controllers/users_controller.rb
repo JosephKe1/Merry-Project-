@@ -6,9 +6,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      redirect_to new_user_id_path
+      UserNotifierMailer.send_signup_email(@user).deliver_now 
+      redirect_to new_payment_path
     else
-      flash[:alert] = "Fix errors below"
       render :new
     end
   end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if @user.present?
       @user.update user_params
       @user.update_attribute(:avatar, params[:user][:avatar])
-    end 
+    end
     redirect_to user_path(current_user)
   end
 

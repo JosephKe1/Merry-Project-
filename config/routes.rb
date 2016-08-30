@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/pages/:page" => "pages#show"
   resources :users, only: [:new, :create, :show, :edit, :update]
   resources :user_ids, only: [:new, :create]
+  resources :payments, only: [:new, :create]
 
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
