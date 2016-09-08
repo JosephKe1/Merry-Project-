@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830053032) do
+ActiveRecord::Schema.define(version: 20160906230849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "billings", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "province"
+    t.string   "postal_code"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_billings_on_user_id", using: :btree
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
@@ -23,12 +36,32 @@ ActiveRecord::Schema.define(version: 20160830053032) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "doctors", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "phone_number"
+    t.string   "specialty"
+    t.string   "address"
+    t.string   "city"
+    t.string   "province"
+    t.string   "postal_code"
+    t.string   "clinic"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "payments", force: :cascade do |t|
     t.integer  "amount"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_payments_on_user_id", using: :btree
+    t.integer  "billing_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "credit_card_number"
+    t.integer  "expiration_month"
+    t.integer  "expiration_year"
+    t.integer  "card_security_code"
+    t.index ["billing_id"], name: "index_payments_on_billing_id", using: :btree
   end
 
   create_table "user_ids", force: :cascade do |t|
@@ -54,6 +87,7 @@ ActiveRecord::Schema.define(version: 20160830053032) do
     t.datetime "avatar_updated_at"
   end
 
-  add_foreign_key "payments", "users"
+  add_foreign_key "billings", "users"
+  add_foreign_key "payments", "billings"
   add_foreign_key "user_ids", "users"
 end

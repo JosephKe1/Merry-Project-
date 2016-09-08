@@ -10,6 +10,9 @@
       <%= password_field_tag :password, nil, placeholder: "Password", class: "form-control" %>
     </div>
   </div>
-  <%= submit_tag "Sign In", class: "btn btn-primary", style: "padding: 10px 100px 10px 100px; border-radius: 30px; color: white; background-color:#0094FF; font-family:Helvetica;" %>
-<% end %>
+  <div class="form-group">
+    <%= submit_tag "Sign In", class: "btn btn-primary", style: "padding: 10px 100px 10px 100px; border-radius: 30px; color: white; background-color:#0094FF; font-family:Helvetica;" %>
+  </div>
+  <% end %>
+  <%= link_to "Don't have an account?", new_user_path %>
 </div>

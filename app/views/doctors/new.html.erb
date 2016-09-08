@@ -1,0 +1,35 @@
+<div class="form-horizontal" style="text-align:center; margin-top:100px;">
+  <h1>Create an account to get started!</h1>
+  <br>
+  <%= @doctor.errors.full_messages.join(", ") %>
+  <%= form_for @doctor do |f| %>
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= f.text_field :first_name, placeholder: "First name", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= f.text_field :last_name, placeholder: "Last name", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= f.email_field :email, placeholder: "Email", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= f.password_field :password_confirmation, placeholder: "Confirm password", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Sign Up", class: "btn btn-primary", style: "padding: 10px 100px 10px 100px; border-radius: 30px; color: white; background-color:#0094FF; font-family:Helvetica;"%>
+  </div>
+  <% end %>
+</div>

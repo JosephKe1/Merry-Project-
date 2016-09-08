@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+
   def new
     @contact = Contact.new
   end
@@ -8,7 +9,7 @@ class ContactsController < ApplicationController
                                                            :email,
                                                            :message)
     if @contact.save
-      AnswerMailer.notify_me.deliver_now 
+      AnswerMailer.notify_me.deliver_now
       redirect_to contact_path
     else
       render :new
